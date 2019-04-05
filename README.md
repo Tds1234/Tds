@@ -58,3 +58,11 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
     ├──── MonogramFont
     │
     └──── MonogramColor</pre>
+
+## Tailori plugin initialization
+
+## Tailori plugin options
+
+## Tailori plugin methods
+
+## Tailori plugin Callback methods
