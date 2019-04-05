@@ -45,7 +45,7 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
     |
     ├─── Detail
     |   |
-    |   └─── Options
+    |   ├─── Options
     |   |   |
     |   |   └─── Features
     |   |
