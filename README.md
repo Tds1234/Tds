@@ -272,7 +272,7 @@ No parameters Required
 ------------------------------------------------
 ### `ResetModal()`
 ##### Description
-This method is used for reseting the position of object.
+This method is used for reseting the position of 3DModel.
 ##### Required parameters
 No parameters Required
 
@@ -283,7 +283,7 @@ No parameters Required
 ------------------------------------------------
 ### `Zoom()`
 ##### Description
-This method zooming in/out of object.
+This method zooming in/out of 3DModel.
 ##### Required parameters
 | parameters  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
