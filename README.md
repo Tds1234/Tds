@@ -96,7 +96,7 @@ No parameters Required
 ------------------------------------------------
 ### `getOptions()`
 ##### Description
-This method is returning the options of current details
+This method is returning the options of current details.
 ##### Required parameters
 | parameters  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
@@ -109,7 +109,7 @@ This method is returning the options of current details
 ------------------------------------------------
 ### `getFeatures()`
 ##### Description
-This method is returning the features of current details or options
+This method is returning the features of current details or options.
 ##### Required parameters
 | parameters  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
@@ -123,7 +123,7 @@ This method is returning the features of current details or options
 ------------------------------------------------
 ### `getContrasts()`
 ##### Description
-This method is returning the contrast of current details
+This method is returning the contrast of current details.
 ##### Required parameters
 | parameters  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
@@ -134,6 +134,161 @@ This method is returning the contrast of current details
   TailoriConfiguration.getContrasts(DetailId/'All');
 ```
 ------------------------------------------------  
+### `getMonogramPlacements()`
+##### Description
+This method is returning the monogram placement of current product.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.getMonogramPlacements();
+```
+------------------------------------------------
+### `getMonogramFonts()`
+##### Description
+This method is returning the monogram fonts of current product.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.getMonogramFonts();
+```
+------------------------------------------------
+### `getMonogramColors()`
+##### Description
+This method is returning the monogram colors of current product.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.getMonogramColors();
+```
+------------------------------------------------
+### `getAlignments()`
+##### Description
+This method is returning the alignments of current product.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.getAlignments();
+```
+------------------------------------------------
+### `getSummary()`
+##### Description
+This method is returning the summary of current select detail,option,feature and fabric.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.getSummary();
+```
+------------------------------------------------
+### `setFeature()`
+##### Description
+This method is used for changing the feature or loading the feature for customization.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Feature Id | string  | simply pass the feature id which is you want to load or change |
+
+##### Example
+```js
+  TailoriConfiguration.setFeature(FeatureId);
+```
+------------------------------------------------  
+### `setTexture()`
+##### Description
+This method is used for rendering the whole object.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Texture Id | string  | simply pass the Texture id which is you want render the object |
+
+##### Example
+```js
+  TailoriConfiguration.setTexture(TextureId);
+```
+------------------------------------------------  
+### `setLibConfigTexture()`
+##### Description
+This method is used for rendering the specific object.This method are used only for LibConfig option like Tie,Waistcoat etc.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Texture Id | string  | simply pass the Texture id which is you want render the object |
+
+##### Example
+```js
+  TailoriConfiguration.setLibConfigTexture(TextureId);
+```
+------------------------------------------------  
+### `ChangeAlignmentTo()`
+##### Description
+This method is used for changing alignment of object.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| alignment | string  | pass the alignment name like face,back |
+
+##### Example
+```js
+  TailoriConfiguration.ChangeAlignmentTo(Alignment);
+```
+------------------------------------------------
+### `LoadProduct()`
+##### Description
+This method is used for changing Product like men-shirt,men-suit.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Product name | string  | pass the product name which you want to change or load |
+
+##### Example
+```js
+  TailoriConfiguration.LoadProduct(ProductName);
+```
+------------------------------------------------
+### `ResetProduct()`
+##### Description
+This method is used for reset or reconfigure the product.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.ResetProduct();
+```
+------------------------------------------------
+### `ResetModal()`
+##### Description
+This method is used for reseting the position of object.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  TailoriConfiguration.ResetModal();
+```
+------------------------------------------------
+### `Zoom()`
+##### Description
+This method zooming in/out of object.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Type | string  | pass 'in' for zoom in or 'out' for zoom out|
+
+##### Example
+```js
+  TailoriConfiguration.Zoom(Type);
+```
+------------------------------------------------
 
 ## Plugin Callback methods
 
