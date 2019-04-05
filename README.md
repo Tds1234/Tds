@@ -98,7 +98,20 @@ No parameters Required
 ##### Description
 This method is returning the options of current details
 ##### Required parameters
-1) Detail Id
+| parameters                                          | Type  | Description |
+| Detail Id | string  | Pass the detail id which you want to get options |
+
+##### Example
+```js
+  TailoriConfiguration.getOptions(DetailId);
+```
+------------------------------------------------
+### `getFeatures()`
+##### Description
+This method is returning the features of current details or options
+##### Required parameters
+1) Detail Id or Option Id
+2)
 
 ##### Example
 ```js
