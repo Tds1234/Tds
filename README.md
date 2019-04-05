@@ -83,5 +83,17 @@ var TailoriConfiguration = new Tailori.TailoriConfig({
 | AutoAlignment                                  | Auto Alignment is the option for Front View and Back View.Boolean values "true" or "false" is used to change the view.<br />For eg. 'AutoAlignment':false, |         |
 
 ## Plugin methods
+### `getDetails()`
+##### Description
+This method is returning the details of current product
+##### Parameters
+
+##### Example
+```js
+  TailoriConfiguration.getDetails();
+```
+------------------------------------------------
 
 ## Plugin Callback methods
+
+## Example
