@@ -98,7 +98,8 @@ No parameters Required
 ##### Description
 This method is returning the options of current details
 ##### Required parameters
-| parameters                                          | Type  | Description |
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
 | Detail Id | string  | Pass the detail id which you want to get options |
 
 ##### Example
