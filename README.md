@@ -309,24 +309,9 @@ No return values.
   }
 ```
 ------------------------------------------------
-### `OnObjectChange()`
-##### Description
-This method call when all configuration are load
-##### Return values
-| Return value  | Type  | Description                                      |
-|-------------|-------|--------------------------------------------------|
-| Feature Id | string  | returning current selected or change feature id|
-
-##### Example
-```js
-  TailoriConfiguration.OnObjectChange = function(FeatureId){
-    // Logic..
-  }
-```
-------------------------------------------------
 ### `OnObjectLoad()`
 ##### Description
-This method call when object/feature are load completed.
+This method call when 3DModel/feature are load completed.
 ##### Return values
 | Return value  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
