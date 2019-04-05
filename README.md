@@ -121,6 +121,19 @@ This method is returning the features of current details or options
   TailoriConfiguration.getFeatures(DetailId/OptionId,Type);
 ```
 ------------------------------------------------
+### `getContrasts()`
+##### Description
+This method is returning the contrast of current details
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Detail Id/All | string  | Pass the detail id which you want to get contrasts, also if you want to get all contrast of product then pass All insted of detail id |
+
+##### Example
+```js
+  TailoriConfiguration.getContrasts(DetailId/'All');
+```
+------------------------------------------------  
 
 ## Plugin Callback methods
 
