@@ -59,10 +59,10 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
     │
     └──── MonogramColor</pre>
 
-## Tailori plugin initialization
+## Plugin initialization
 
-## Tailori plugin options
+## Plugin options
 
-## Tailori plugin methods
+## Plugin methods
 
-## Tailori plugin Callback methods
+## Plugin Callback methods
