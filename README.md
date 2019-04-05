@@ -61,13 +61,13 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
 
 ## Plugin initialization
 
-Download plugin and add script
+1) Download plugin and add script
 
 ```html
 <script src="js/tailori.js"></script>
 ```
 
-next to create object of Plugin.
+2) To create object of Plugin.
 
 ```js
 
