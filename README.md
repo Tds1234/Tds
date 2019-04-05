@@ -111,12 +111,14 @@ This method is returning the options of current details
 ##### Description
 This method is returning the features of current details or options
 ##### Required parameters
-1) Detail Id or Option Id
-2)
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Detail Id or Option Id | string  | If you want to get all options features then pass the detail id, or if you want to get particular options feature then pass options id |
+| Type | boolean  | If you getting  feature using detail id then pass true, either pass false  |
 
 ##### Example
 ```js
-  TailoriConfiguration.getOptions(DetailId);
+  TailoriConfiguration.getFeatures(DetailId/OptionId,Type);
 ```
 ------------------------------------------------
 
