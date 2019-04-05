@@ -243,7 +243,7 @@ This method is used for changing alignment of object.
 ------------------------------------------------
 ### `LoadProduct()`
 ##### Description
-This method is used for changing Product like men-shirt,men-suit.
+This method is used for changing current product to another product.
 ##### Required parameters
 | parameters  | Type  | Description                                      |
 |-------------|-------|--------------------------------------------------|
@@ -291,5 +291,122 @@ This method zooming in/out of object.
 ------------------------------------------------
 
 ## Plugin Callback methods
+### `OnConfigLoad()`
+##### Description
+This method call when all configuration are load
+##### Return values
+No return values.
+
+##### Example
+```js
+  TailoriConfiguration.OnConfigLoad = function(){
+    // Logic..
+  }
+```
+------------------------------------------------
+### `OnObjectChange()`
+##### Description
+This method call when all configuration are load
+##### Return values
+| Return value  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Feature Id | string  | returning current selected or change feature id|
+
+##### Example
+```js
+  TailoriConfiguration.OnObjectChange = function(FeatureId){
+    // Logic..
+  }
+```
+------------------------------------------------
+### `OnObjectLoad()`
+##### Description
+This method call when object/feature are load completed.
+##### Return values
+| Return value  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Feature Id | string  | returning current selected or change feature id|
+
+##### Example
+```js
+  TailoriConfiguration.OnObjectLoad = function(FeatureId){
+    // Logic..
+  }
+```
+------------------------------------------------
+### `OnTextureChange()`
+##### Description
+This method call when texture are load.
+##### Return values
+| Return value  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Texture Id | string  | returning current rendered texture id|
+
+##### Example
+```js
+  TailoriConfiguration.OnTextureChange = function(FeatureId){
+    // Logic..
+  }
+```
+------------------------------------------------
+### `OnFeatureChange()`
+##### Description
+This method call when feature are change.
+##### Return values
+| Return value  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Detail Id | string  | returning current selected or change detail id|
+| Feature Id | string  | returning current selected or change feature id|
+
+##### Example
+```js
+  TailoriConfiguration.OnFeatureChange = function(DetailId,FeatureId){
+    // Logic..
+  }
+```
+------------------------------------------------
+### `OnLibConfigChange()`
+##### Description
+This method call when you set libconfig feature (seperately draping feature).
+##### Return values
+| Return value  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| Detail Id | string  | returning current selected or change detail id|
+| Feature Id | string  | returning current selected or change feature id|
+
+##### Example
+```js
+  TailoriConfiguration.OnLibConfigChange = function(DetailId,FeatureId){
+    // Logic..
+  }
+```
+------------------------------------------------
 
 ## Example
+Using Tailori3D Plugin
+
+```js
+
+var Tailoriconfig = new Tailori.TailoriConfig({
+  ServiceUrl:"http://ip/WEBAPI3D",
+  Key:"1234656",
+  DefaultProduct:"Men-Shirt",
+  ContainerId:"Scene",
+  Texture: "7144E49A5",
+  AutoAlignment: true,
+  CursorZoom: true
+});
+
+Tailoriconfig.OnConfigLoad = function(){
+  alert("All configuration load..");
+
+  var Details = Tailoriconfig.getDetails();
+  
+};
+
+$("#resetmodal").click(function(){
+  Tailoriconfig.ResetModal();
+});
+
+
+```
