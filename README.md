@@ -77,8 +77,10 @@ var TailoriConfiguration = new Tailori.TailoriConfig({
 | ServiceUrl                                     | ServiceUrl is a url where we place all our data that we need to call, <br />For eg. product, draping parts, buttons, fabrics, etc. <br />**Provided by textronics.**  | * |
 | Key                                    | Unique id generated when user logs in with given username and password <br>**Provided by textronics.** </br> | * |			
 | DefaultProduct                                        | Product Name <br /> For eg. 'Product':'MEN-SHIRT'| * |
-| ContainerId                                    | Image container Id where rendered 3D images are placed (i.e. id).<br />For eg. 'Product Template': scene | * |
+| ContainerId                                    | Image container Id where rendered 3D images are placed (i.e. id).<br />For eg. 'ContainerId': scene | * |
 | Texture                                    | Set default texture id to render default texture.<br />For eg. 'Texture': 7144E49A5 | * |
+| AutoSpecific                                   | If *true* Zoomed view of specific part is automatically rendered *else* not.|         |
+| AutoAlignment                                  | Auto Alignment is the option for Front View and Back View.Boolean values "true" or "false" is used to change the view.<br />For eg. 'AutoAlignment':false, |         |
 
 ## Plugin methods
 
