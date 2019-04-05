@@ -61,7 +61,13 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
 
 ## Plugin initialization
 
-To create object of Plugin.
+Download plugin and add script
+
+```html
+<script src="js/tailori.js"></script>
+```
+
+next to create object of Plugin.
 
 ```js
 
@@ -401,7 +407,7 @@ Tailoriconfig.OnConfigLoad = function(){
   alert("All configuration load..");
 
   var Details = Tailoriconfig.getDetails();
-  
+
 };
 
 $("#resetmodal").click(function(){
