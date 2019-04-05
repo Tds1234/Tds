@@ -41,23 +41,22 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
 ##### Tailori structure hierarchy
 
 <pre>
-├──── Product
+├──── Product (Men-Shirt,Men-Suit etc..)
     |
-    ├─── Detail
+    ├─── Detail (Model,Cuff,Sleeves etc..)
     |   |
-    |   ├─── Options
+    |   ├─── Options (Rounded Cuff,Straight Cuff etc..)
     |   |   |
-    |   |   └─── Features
+    |   |   └─── Features (Rounded Single Button Cuff,Rounded Double Button Cuff etc..)
     |   |
-    |   └─── Contrasts
-    |       |
-    |       └─── Contrasts Features
+    |   └─── Contrasts Features (Full Contrast,Inside Cuff Contrast etc..)
+    |           
     |
-    ├──── MonogramPlacement
+    ├──── MonogramPlacement (Collar,Pocket,Cuff etc..)
     │
-    ├──── MonogramFont
+    ├──── MonogramFont (Times new roman,Arial etc..)
     │
-    └──── MonogramColor</pre>
+    └──── MonogramColor (29C5072[hex-value] etc..)</pre>
 
 ## Plugin initialization
 
