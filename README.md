@@ -61,6 +61,16 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
 
 ## Plugin initialization
 
+To create object of Plugin.
+
+```js
+
+var TailoriConfiguration = new Tailori.TailoriConfig({
+  // plugin options
+});
+
+```
+
 ## Plugin options
 
 ## Plugin methods
