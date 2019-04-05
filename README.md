@@ -86,11 +86,23 @@ var TailoriConfiguration = new Tailori.TailoriConfig({
 ### `getDetails()`
 ##### Description
 This method is returning the details of current product
-##### Parameters
+##### Required parameters
+No parameters Required
 
 ##### Example
 ```js
   TailoriConfiguration.getDetails();
+```
+------------------------------------------------
+### `getOptions()`
+##### Description
+This method is returning the options of current details
+##### Required parameters
+1) Detail Id
+
+##### Example
+```js
+  TailoriConfiguration.getOptions(DetailId);
 ```
 ------------------------------------------------
 
