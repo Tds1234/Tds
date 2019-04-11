@@ -30,7 +30,7 @@
         $("#Product .dropdown-menu").empty().html(txt);
 
         $("#Product .dropdown-menu li").unbind("click");
-        $("#Product .dropdown-menu li").click(function(){
+        $("#Product").on("click",".dropdown-menu li",function(){
           var id = $(this).find("a").html();
           Tailoriconfig.LoadProduct(id);
         });
