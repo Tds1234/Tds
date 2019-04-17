@@ -11,7 +11,7 @@
     <script>
 
       var ServiceUrl = "http://172.16.1.72/WEB_API_3D";
-      var key = "932843964";
+      var key = "2061326238";
 
       $.ajax({
         url:ServiceUrl+"/v1/Product?key="+key,
@@ -187,6 +187,20 @@
           $("#resetproduct").unbind('click');
           $("#resetproduct").click(function(){
             Tailoriconfig.ResetProduct();
+          });
+
+          $("#chevent").unbind('click');
+          $("#chevent").click(function(){
+
+            if($(this).attr('evflag') === 'false'){
+              Tailoriconfig.RotationWithPan(true);
+              $(this).attr('evflag','true')
+              alert("Event change to rotation with panning");
+            }else{
+              Tailoriconfig.RotationWithPan(false);
+              $(this).attr('evflag','false');
+              alert("Event change to rotation");
+            }
           });
       };
 
@@ -427,6 +441,7 @@
               <li id="resetmodal">Reset Model</li>
               <li id="summary">Summary</li>
               <li id="resetproduct">Reset Product</li>
+              <li evflag="false" id="chevent">Change Event</li>
             </ul>
           </div>
         </div>
