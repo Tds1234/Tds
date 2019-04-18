@@ -202,6 +202,13 @@
               alert("Event change to rotation");
             }
           });
+
+          $("#screenshot").unbind('click');
+          $("#screenshot").click(function(){
+            var url = Tailoriconfig.getScreenshot();
+            var win=window.open();
+            win.document.write("<img src='"+url+"'/>");
+          });
       };
 
       Tailoriconfig.OnFeatureChange = function(DetailId,FeatureId){
@@ -442,6 +449,7 @@
               <li id="summary">Summary</li>
               <li id="resetproduct">Reset Product</li>
               <li evflag="false" id="chevent">Change Event</li>
+              <li id="screenshot">Take Screenshot</li>
             </ul>
           </div>
         </div>
