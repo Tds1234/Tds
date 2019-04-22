@@ -11,7 +11,7 @@
     <script>
 
       var ServiceUrl = "http://172.16.1.72/WEB_API_3D";
-      var key = "2061326238";
+      var key = "3001617408";
 
       $.ajax({
         url:ServiceUrl+"/v1/Product?key="+key,
@@ -30,9 +30,10 @@
         $("#Product .dropdown-menu").empty().html(txt);
 
         $("#Product .dropdown-menu li").unbind("click");
-        $("#Product").on("click",".dropdown-menu li",function(){
+        $("body").on("click","#Product .dropdown-menu li",function(event){
           var id = $(this).find("a").html();
           Tailoriconfig.LoadProduct(id);
+          $("#loader").show();
         });
       });
 
@@ -41,7 +42,7 @@
         Key:key,
         DefaultProduct:"Men-Shirt",
         ContainerId:"Scene",
-        Texture: "7144E49A5",
+        //Texture: "7144E49A5",
         AutoAlignment: true,
         CursorZoom: true
       });
@@ -99,6 +100,7 @@
           $("#menu .nested-menu li").click(function(){
             var  id = $(this).attr("id");
             var detailId = $(this).attr("detail");
+            $("#loader").show();
             Tailoriconfig.setFeature(id);
           });
 
@@ -186,6 +188,7 @@
 
           $("#resetproduct").unbind('click');
           $("#resetproduct").click(function(){
+            $("#loader").show();
             Tailoriconfig.ResetProduct();
           });
 
@@ -209,14 +212,18 @@
             var win=window.open();
             win.document.write("<img src='"+url+"'/>");
           });
+
+          $("#loader").hide();
       };
 
       Tailoriconfig.OnFeatureChange = function(DetailId,FeatureId){
         getFabrics(DetailId,false);
+        $("#loader").hide();
       }
 
       Tailoriconfig.OnLibConfigChange = function(DetailId,FeatureId){
         //Tailoriconfig.setLibConfigTexture("abc");
+        $("#loader").hide();
         getFabrics(DetailId,true);
       }
 
@@ -229,6 +236,10 @@
         //         + "FeatureId" +selectedElements.FeatureId
         //         + "FeatureName" +selectedElements.FeatureName;
         // alert(txt);
+      }
+
+      Tailoriconfig.OnTextureChange = function(){
+        $("#loader").hide();
       }
 
       function getFabrics(id,isLibConfig){
@@ -253,12 +264,14 @@
             $("#fabrics ul li").unbind("click");
             $("#fabrics ul li").click(function(){
               var id = $(this).attr("id");
+              $("#loader").show();
               Tailoriconfig.setLibConfigTexture(id);
             });
           }else{
             $("#fabrics ul li").unbind("click");
             $("#fabrics ul li").click(function(){
               var id = $(this).attr("id");
+              $("#loader").show();
               Tailoriconfig.setTexture(id);
             });
           }
@@ -434,7 +447,7 @@
           </div>
         </div>
         <div class="col-sm-6 fill" id="Scene">
-
+          <div id="loader"></div>
         </div>
         <div class="col-sm-2 fill">
           <div id="zoombutton">
