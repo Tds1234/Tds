@@ -118,8 +118,20 @@ html, body {
   cursor: pointer;
   color: #777;
   background-color: #fff;
+  cursor: pointer;
 }
 #other ul li:hover{
   background-color: #d1d1d1;
   color: #777;
+}
+
+#loader{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: 40%;
+  margin-top: 30%;
+  background-image: url('../loader.gif');
+  background-size: contain;
+  padding: 0px;
 }
