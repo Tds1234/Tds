@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/accordian.css">
     <script>
 
-      var ServiceUrl = "http://172.16.1.72/WEB_API_3D";
-      var key = "2780946495";
-      // var key = "3924722908";
+      var ServiceUrl = "http://textronic.online/WEB_API_3D1";
+      var key = "1046999857";
+
       var SpecificView = "";
       var selectedDetailId = "";
       var autoSpecificFlag = true;
@@ -46,247 +46,252 @@
 
       $.getJSON('./positions.json', function(data) {
           SpecificView = data;
+      });
 
-          Tailoriconfig = new Tailori.TailoriConfig({
-            ServiceUrl:ServiceUrl,
-            Key:key,
-            DefaultProduct:"Men-Shirt",
-            ContainerId:"Scene",
-            //Texture: "714df4E49A5",
-            SpecificView: SpecificView,
-            AutoAlignment: true,
-            CursorZoom: true
-            //ModelFOV : 30,
-            //ModelPosition : -12
+      //============================ Plugin initialization ==============================
+
+      Tailoriconfig = new Tailori.TailoriConfig({
+        ServiceUrl:ServiceUrl,
+        Key:key,
+        DefaultProduct:"Men-Shirt",
+        ContainerId:"Scene",
+        //Texture: "714df4E49A5",
+        SpecificView: SpecificView,
+        AutoAlignment: true,
+        CursorZoom: true
+        //ModelFOV : 30,
+        //ModelPosition : -12
+      });
+
+      //============================ Callback methods ==============================
+
+      Tailoriconfig.OnConfigLoad = function(type){
+
+          //console.log(Tailoriconfig.getAlignments());
+
+          var txt = "";
+
+          var Details = Tailoriconfig.getDetails(); // gettting All Details of selected Product
+          for (var index in Details) {
+
+                txt += "<div class='panel-group accordionmenu' id='"+ Details[index].Id +"'>";
+                txt +="<div class='panel panel-default'>";
+                txt +="<div class='panel-heading'>";
+                txt +="<h4 class='panel-title title'>";
+                txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+ Details[index].Id +"' href='#"+ Details[index].Id +"Two' aria-expanded='false'>";
+                txt +=Details[index].Name;
+                txt +="</a>";
+                txt +="</h4>";
+                txt +="</div>"
+                txt += "<div id='"+ Details[index].Id +"Two' class='panel-collapse collapse' aria-expanded='true' style=''>";
+                txt +="<div class='panel-body'>";
+                txt +="<div class='panel-group id='"+Details[index].Id+"Nasted'>"
+            var Options = Tailoriconfig.getOptions(Details[index].Id);
+            for(var index2 in Options){
+                  txt +="<div class='panel panel-default'>";
+                  txt +="<div class='panel-heading'>";
+                  txt +="<h4 class='panel-title title'>";
+                  txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+Details[index].Id+"Nasted' href='#"+Options[index2].Id+"Feature'>";
+                  txt +=Options[index2].Name;
+                  txt +="</a>";
+                  txt +="</h4>";
+                  txt +="</div>";
+                  txt +="<div id='"+Options[index2].Id+"Feature' class='panel-collapse collapse'>";
+                  txt +="<div class='panel-body nested-menu'>";
+                  var Features = Tailoriconfig.getFeatures(Options[index2].Id);
+                  for (var index3 in Features) {
+                    txt +="<li id='"+Features[index3].Id+"' detail='"+Details[index].Id+"'><a href='#'>"+Features[index3].Name+"</a></li>";
+                  }
+                  txt +="</div>";
+                  txt +="</div>";
+                  txt +="</div>";
+            }
+              txt +="</div>";
+              txt +="</div>";
+              txt +="</div>";
+              txt +="</div>";
+              txt +="</div>";
+          }
+          $("#menu").empty().html(txt);
+          $("#menu .accordionmenu").eq(0).css("margin-top","51px");
+
+          $("#menu .nested-menu li").unbind("click");
+          $("#menu .nested-menu li").click(function(e){
+            e.stopPropagation();
+            var  id = $(this).attr("id");
+            var detailId = $(this).attr("detail");
+            $("#loader").show();
+            Tailoriconfig.setFeature(id);
           });
 
-          Tailoriconfig.OnConfigLoad = function(type){
-              //console.log(Tailoriconfig.getAlignments());
+          getFabrics($("#menu .accordionmenu").eq(0).attr("id"));
 
-              var txt = "";
+          var alignments = Tailoriconfig.getAlignments();
+          $("#alignment ul").empty();
+          for (var align in alignments) {
+            if (alignments.hasOwnProperty(align)) {
+              $("#alignment ul").append("<li name='"+alignments[align]+"'>"+alignments[align]+"</li>");
+            }
+          }
 
-              var Details = Tailoriconfig.getDetails(); // gettting All Details of selected Product
-              for (var index in Details) {
+          $("#alignment ul li").unbind('click');
+          $("#alignment ul li").click(function(){
+            var name = $(this).attr("name");
+            Tailoriconfig.ChangeAlignmentTo(name);
+          });
 
-                    txt += "<div class='panel-group accordionmenu' id='"+ Details[index].Id +"'>";
-                    txt +="<div class='panel panel-default'>";
-                    txt +="<div class='panel-heading'>";
-                    txt +="<h4 class='panel-title title'>";
-                    txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+ Details[index].Id +"' href='#"+ Details[index].Id +"Two' aria-expanded='false'>";
-                    txt +=Details[index].Name;
-                    txt +="</a>";
-                    txt +="</h4>";
-                    txt +="</div>"
-                    txt += "<div id='"+ Details[index].Id +"Two' class='panel-collapse collapse' aria-expanded='true' style=''>";
-                    txt +="<div class='panel-body'>";
-                    txt +="<div class='panel-group id='"+Details[index].Id+"Nasted'>"
-                var Options = Tailoriconfig.getOptions(Details[index].Id);
-                for(var index2 in Options){
-                      txt +="<div class='panel panel-default'>";
-                      txt +="<div class='panel-heading'>";
-                      txt +="<h4 class='panel-title title'>";
-                      txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+Details[index].Id+"Nasted' href='#"+Options[index2].Id+"Feature'>";
-                      txt +=Options[index2].Name;
-                      txt +="</a>";
-                      txt +="</h4>";
-                      txt +="</div>";
-                      txt +="<div id='"+Options[index2].Id+"Feature' class='panel-collapse collapse'>";
-                      txt +="<div class='panel-body nested-menu'>";
-                      var Features = Tailoriconfig.getFeatures(Options[index2].Id);
-                      for (var index3 in Features) {
-                        txt +="<li id='"+Features[index3].Id+"' detail='"+Details[index].Id+"'><a href='#'>"+Features[index3].Name+"</a></li>";
-                      }
-                      txt +="</div>";
-                      txt +="</div>";
-                      txt +="</div>";
-                }
-                  txt +="</div>";
-                  txt +="</div>";
-                  txt +="</div>";
-                  txt +="</div>";
-                  txt +="</div>";
-              }
-              $("#menu").empty().html(txt);
-              $("#menu .accordionmenu").eq(0).css("margin-top","51px");
+          $("#zoombutton ul li").unbind('click');
+          $("#zoombutton ul li").click(function(){
+            var id = $(this).attr("id");
+            if(id.toLowerCase() === "in"){
+              Tailoriconfig.Zoom("in");
+            }else{
+              Tailoriconfig.Zoom("out");
+            }
+          });
 
-              $("#menu .nested-menu li").unbind("click");
-              $("#menu .nested-menu li").click(function(e){
-                e.stopPropagation();
-                var  id = $(this).attr("id");
-                var detailId = $(this).attr("detail");
-                $("#loader").show();
-                Tailoriconfig.setFeature(id);
-              });
+          $("#resetmodal").unbind('click');
+          $("#resetmodal").click(function(){
+            Tailoriconfig.ResetModel();
+          });
 
-              getFabrics($("#menu .accordionmenu").eq(0).attr("id"));
-
-              var alignments = Tailoriconfig.getAlignments();
-              $("#alignment ul").empty();
-              for (var align in alignments) {
-                if (alignments.hasOwnProperty(align)) {
-                  $("#alignment ul").append("<li name='"+alignments[align]+"'>"+alignments[align]+"</li>");
-                }
-              }
-
-              $("#alignment ul li").unbind('click');
-              $("#alignment ul li").click(function(){
-                var name = $(this).attr("name");
-                Tailoriconfig.ChangeAlignmentTo(name);
-              });
-
-              $("#zoombutton ul li").unbind('click');
-              $("#zoombutton ul li").click(function(){
-                var id = $(this).attr("id");
-                if(id.toLowerCase() === "in"){
-                  Tailoriconfig.Zoom("in");
-                }else{
-                  Tailoriconfig.Zoom("out");
-                }
-              });
-
-              $("#resetmodal").unbind('click');
-              $("#resetmodal").click(function(){
-                Tailoriconfig.ResetModel();
-              });
-
-              $("#summary").unbind('click');
-              $("#summary").click(function(){
-                var summary = Tailoriconfig.getSummary();
-                console.log(summary);
-                var txt = "<h4>Products Summary</h4>";
-                    txt += "<table class='table'>";
-                    txt += "<thead>";
-                    txt += "<tr>";
-                    txt += "<th>Detail</th>";
-                    txt += "<th>Option</th>";
-                    txt += "<th>Feature</th>";
-                    txt += "</tr>";
-                    txt += "</thead>";
-                    txt += "<tbody>";
-                for (var product in summary.ProductSummary) {
-                  if (summary.ProductSummary.hasOwnProperty(product)) {
-                    txt += "<tr>";
-                    txt += "<td>"+summary.ProductSummary[product].DetailName+"</td>";
-                    txt += "<td>"+summary.ProductSummary[product].OptionName+"</td>";
-                    txt += "<td>"+summary.ProductSummary[product].FeatureName+"</td>";
-                    txt += "</tr>";
-                  }
-                }
-                txt += "<tbody>";
-                txt += "</table>";
-
-                txt += "<h4>Fabrics Summary</h4>";
+          $("#summary").unbind('click');
+          $("#summary").click(function(){
+            var summary = Tailoriconfig.getSummary();
+            console.log(summary);
+            var txt = "<h4>Products Summary</h4>";
                 txt += "<table class='table'>";
                 txt += "<thead>";
                 txt += "<tr>";
-                txt += "<th>Place</th>";
-                txt += "<th>Fabric</th>";
+                txt += "<th>Detail</th>";
+                txt += "<th>Option</th>";
+                txt += "<th>Feature</th>";
                 txt += "</tr>";
                 txt += "</thead>";
                 txt += "<tbody>";
-                for (var fabric in summary.FabricsSummary) {
-                  if (summary.FabricsSummary.hasOwnProperty(fabric)) {
-                    txt += "<tr>";
-                    txt += "<td>"+summary.FabricsSummary[fabric].Detail+"</td>";
-                    txt += "<td>"+summary.FabricsSummary[fabric].FabricId+"</td>";
-                    txt += "</tr>";
-                  }
-                }
-                txt += "<tbody>";
-                txt += "</table>";
-
-                $("#myModal").find(".modal-body").empty();
-                $("#myModal").find(".modal-body").html(txt);
-                $("#myModal").modal();
-              });
-
-              $("#resetproduct").unbind('click');
-              $("#resetproduct").click(function(){
-                $("#loader").show();
-                Tailoriconfig.ResetProduct();
-              });
-
-              $("#chevent").unbind('click');
-              $("#chevent").click(function(){
-
-                if($(this).attr('evflag') === 'false'){
-                  Tailoriconfig.RotationWithPan(true);
-                  $(this).attr('evflag','true');
-                  alert("Event change to rotation with panning");
-                }else{
-                  Tailoriconfig.RotationWithPan(false);
-                  $(this).attr('evflag','false');
-                  alert("Event change to rotation");
-                }
-              });
-
-              $("#screenshot").unbind('click');
-              $("#screenshot").click(function(){
-                var url = Tailoriconfig.getScreenshot();
-                var win=window.open();
-                win.document.write("<img src='"+url+"'/>");
-              });
-
-              $(".accordionmenu").unbind('click');
-              $('body').on('click','.accordionmenu',function(){
-                var name = $(this).find('a').html();
-                var id =  $(this).attr('id');
-                if(selectedDetailId !== id){
-                  selectedDetailId = id;
-                  if(autoSpecificFlag)
-                    Tailoriconfig.setSpecificView(id);
-                }
-              });
-
-              if(type.toLowerCase().includes("suit")){
-                Tailoriconfig.setModelPosition(7,30);
+            for (var product in summary.ProductSummary) {
+              if (summary.ProductSummary.hasOwnProperty(product)) {
+                txt += "<tr>";
+                txt += "<td>"+summary.ProductSummary[product].DetailName+"</td>";
+                txt += "<td>"+summary.ProductSummary[product].OptionName+"</td>";
+                txt += "<td>"+summary.ProductSummary[product].FeatureName+"</td>";
+                txt += "</tr>";
               }
+            }
+            txt += "<tbody>";
+            txt += "</table>";
+
+            txt += "<h4>Fabrics Summary</h4>";
+            txt += "<table class='table'>";
+            txt += "<thead>";
+            txt += "<tr>";
+            txt += "<th>Place</th>";
+            txt += "<th>Fabric</th>";
+            txt += "</tr>";
+            txt += "</thead>";
+            txt += "<tbody>";
+            for (var fabric in summary.FabricsSummary) {
+              if (summary.FabricsSummary.hasOwnProperty(fabric)) {
+                txt += "<tr>";
+                txt += "<td>"+summary.FabricsSummary[fabric].Detail+"</td>";
+                txt += "<td>"+summary.FabricsSummary[fabric].FabricId+"</td>";
+                txt += "</tr>";
+              }
+            }
+            txt += "<tbody>";
+            txt += "</table>";
+
+            $("#myModal").find(".modal-body").empty();
+            $("#myModal").find(".modal-body").html(txt);
+            $("#myModal").modal();
+          });
+
+          $("#resetproduct").unbind('click');
+          $("#resetproduct").click(function(){
+            $("#loader").show();
+            Tailoriconfig.ResetProduct();
+          });
+
+          $("#chevent").unbind('click');
+          $("#chevent").click(function(){
+
+            if($(this).attr('evflag') === 'false'){
               Tailoriconfig.RotationWithPan(true);
-              $("#chevent").attr('evflag','true');
+              $(this).attr('evflag','true');
+              alert("Event change to rotation with panning");
+            }else{
+              Tailoriconfig.RotationWithPan(false);
+              $(this).attr('evflag','false');
+              alert("Event change to rotation");
+            }
+          });
 
-              $("#autoSpecific").unbind('click');
-              $('#autoSpecific').click(function(){
-                autoSpecificFlag = autoSpecificFlag ? false : true;
+          $("#screenshot").unbind('click');
+          $("#screenshot").click(function(){
+            var url = Tailoriconfig.getScreenshot();
+            var win=window.open();
+            win.document.write("<img src='"+url+"'/>");
+          });
 
-                if(autoSpecificFlag)
-                  alert("Auto Specific view enabled");
-                else
-                  alert("Auto specific view disabled");
-              });
+          $(".accordionmenu").unbind('click');
+          $('body').on('click','.accordionmenu',function(){
+            var name = $(this).find('a').html();
+            var id =  $(this).attr('id');
+            if(selectedDetailId !== id){
+              selectedDetailId = id;
+              if(autoSpecificFlag)
+                Tailoriconfig.setSpecificView(id);
+            }
+          });
 
-              $("#loader").hide();
-          };
-
-          Tailoriconfig.OnFeatureChange = function(DetailId,FeatureId){
-            getFabrics(DetailId,false);
-            $("#loader").hide();
+          if(type.toLowerCase().includes("suit")){
+            Tailoriconfig.setModelPosition(7,30);
           }
+          Tailoriconfig.RotationWithPan(true);
+          $("#chevent").attr('evflag','true');
 
-          Tailoriconfig.OnLibConfigChange = function(DetailId,FeatureId){
-            //Tailoriconfig.setLibConfigTexture("abc");
-            $("#loader").hide();
-            getFabrics(DetailId,true);
-          }
+          $("#autoSpecific").unbind('click');
+          $('#autoSpecific').click(function(){
+            autoSpecificFlag = autoSpecificFlag ? false : true;
 
-          Tailoriconfig.OnObjectClick = function(selectedElements){
-            console.log(selectedElements);
-            // var txt = "DetailId: " +selectedElements.DetailId
-            //         + "DetailName" +selectedElements.DetailName
-            //         + "OptionId" +selectedElements.OptionId
-            //         + "OptionName" +selectedElements.OptionName
-            //         + "FeatureId" +selectedElements.FeatureId
-            //         + "FeatureName" +selectedElements.FeatureName;
-            // alert(txt);
-          }
+            if(autoSpecificFlag)
+              alert("Auto Specific view enabled");
+            else
+              alert("Auto specific view disabled");
+          });
 
-          Tailoriconfig.OnTextureChange = function(){
-            $("#loader").hide();
-          }
+          $("#loader").hide();
+      };
 
-          Tailoriconfig.OnLoading = function(percentage){
-            console.log("Model loading " + percentage + "%");
-          }
-      });
+      Tailoriconfig.OnFeatureChange = function(DetailId,FeatureId){
+        getFabrics(DetailId,false);
+        $("#loader").hide();
+      }
+
+      Tailoriconfig.OnLibConfigChange = function(DetailId,FeatureId){
+        //Tailoriconfig.setLibConfigTexture("abc");
+        $("#loader").hide();
+        getFabrics(DetailId,true);
+      }
+
+      Tailoriconfig.OnObjectClick = function(selectedElements){
+        console.log(selectedElements);
+        // var txt = "DetailId: " +selectedElements.DetailId
+        //         + "DetailName" +selectedElements.DetailName
+        //         + "OptionId" +selectedElements.OptionId
+        //         + "OptionName" +selectedElements.OptionName
+        //         + "FeatureId" +selectedElements.FeatureId
+        //         + "FeatureName" +selectedElements.FeatureName;
+        // alert(txt);
+      }
+
+      Tailoriconfig.OnTextureChange = function(){
+        $("#loader").hide();
+      }
+
+      Tailoriconfig.OnLoading = function(percentage){
+        console.log("Model loading " + percentage + "%");
+      }
 
 
 
@@ -320,7 +325,7 @@
             $("#fabrics ul li").click(function(){
               var id = $(this).attr("id");
               $("#loader").show();
-              Tailoriconfig.setTexture(id);
+              Tailoriconfig.setTexture(id,2);
             });
           }
         });
