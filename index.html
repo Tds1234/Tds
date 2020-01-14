@@ -10,15 +10,14 @@
     <link rel="stylesheet" type="text/css" href="css/accordian.css">
     <script>
 
-      var ServiceUrl = "http://textronic.online/WEB_API_3D1";
-      var key = "1046999857";
+    var ServiceUrl = "http://172.16.1.72/WEB_API_3D1";
+    var key = "2965355541";
 
       var SpecificView = "";
       var selectedDetailId = "";
       var autoSpecificFlag = true;
 
-      /*var look = "eyJSTyI6eyI4RTc0QUU0ODUiOnsiSWQiOiJGMUQ2ODBGNEIiLCJOYW1lIjoiUmVndWxhciBGaXQiLCJTd2F0Y2giOiIxN0Y3M0IxNUMiLCJTd2F0Y2hOYW1lIjoiIiwiQ29sb3IiOiIiLCJDb250cmFzdCI6eyJDU3dhdGNoIjoiIiwiQ0NvbG9yIjoiIiwiQ05vIjoiIn19LCI0MDQzQTA5NEEiOnsiSWQiOiI2QjY0RTI5RUYiLCJOYW1lIjoiSGFsZiBTbGVldmUiLCJTd2F0Y2giOiIxN0Y3M0IxNUMiLCJTd2F0Y2hOYW1lIjoiIiwiQ29sb3IiOiIiLCJDb250cmFzdCI6eyJDU3dhdGNoIjoiIiwiQ0NvbG9yIjoiIiwiQ05vIjoiIn19LCIyMEJDMjUyNzMiOnsiSWQiOiI1QzMwMjdGRDYiLCJOYW1lIjoiQmV2ZWxlZCBTaW5nbGUgQnV0dG9uIiwiU3dhdGNoIjoiMTdGNzNCMTVDIiwiU3dhdGNoTmFtZSI6IiIsIkNvbG9yIjoiIiwiQ29udHJhc3QiOnsiQ1N3YXRjaCI6IiIsIkNDb2xvciI6IiIsIkNObyI6IiJ9fSwiNEM5QTFBMjBGIjp7IklkIjoiOTE0NUU3NkQiLCJOYW1lIjoiTm9ybWFsIENvbGxhciIsIlN3YXRjaCI6IjE3RjczQjE1QyIsIlN3YXRjaE5hbWUiOiIiLCJDb2xvciI6IiIsIkNvbnRyYXN0Ijp7IkNTd2F0Y2giOiIiLCJDQ29sb3IiOiIiLCJDTm8iOiIifX0sIkNDNTY2OTExNyI6eyJJZCI6IjgwRTU2NkM5MSIsIk5hbWUiOiJSZWd1bGFyIFNpbmdsZSBCdXR0b24iLCJTd2F0Y2giOiIxN0Y3M0IxNUMiLCJTd2F0Y2hOYW1lIjoiIiwiQ29sb3IiOiIiLCJDb250cmFzdCI6eyJDU3dhdGNoIjoiIiwiQ0NvbG9yIjoiIiwiQ05vIjoiIn19LCJBNDBGNUUxOUUiOnsiSWQiOiI3NTA5MzYxMkMiLCJOYW1lIjoiRGlhbW9uZCBTaW5nbGUiLCJTd2F0Y2giOiIxN0Y3M0IxNUMiLCJTd2F0Y2hOYW1lIjoiIiwiQ29sb3IiOiIiLCJDb250cmFzdCI6eyJDU3dhdGNoIjoiIiwiQ0NvbG9yIjoiIiwiQ05vIjoiIn19LCJGNEQyRjlGMTUiOnsiSWQiOiJDQjk5NTRDQTYiLCJOYW1lIjoiTm8iLCJTd2F0Y2giOiIxN0Y3M0IxNUMiLCJTd2F0Y2hOYW1lIjoiIiwiQ29sb3IiOiIiLCJDb250cmFzdCI6eyJDU3dhdGNoIjoiIiwiQ0NvbG9yIjoiIiwiQ05vIjoiIn19LCIxRUNENzg1NyI6eyJJZCI6IjQ2MUQ4MEUxNiIsIk5hbWUiOiJObyBCYWNrIERldGFpbCIsIlN3YXRjaCI6IjE3RjczQjE1QyIsIlN3YXRjaE5hbWUiOiIiLCJDb2xvciI6IiIsIkNvbnRyYXN0Ijp7IkNTd2F0Y2giOiIiLCJDQ29sb3IiOiIiLCJDTm8iOiIifX0sIjVFMjc0N0QzRCI6eyJJZCI6IjgzODgxNDc0RCIsIk5hbWUiOiJObyIsIlN3YXRjaCI6IjE3RjczQjE1QyIsIlN3YXRjaE5hbWUiOiIiLCJDb2xvciI6IiIsIkNvbnRyYXN0Ijp7IkNTd2F0Y2giOiIiLCJDQ29sb3IiOiIiLCJDTm8iOiIifX0sIjcyOThCQUQzNCI6eyJJZCI6IkQ2QTU0RkZGRCIsIk5hbWUiOiJCdXR0b25zIiwiU3dhdGNoIjoiOEQyQUMzQ0YiLCJTd2F0Y2hOYW1lIjoiNDU1MyBQdXJwbGUiLCJDb2xvciI6IiIsIkNvbnRyYXN0Ijp7IkNTd2F0Y2giOiIiLCJDQ29sb3IiOiIiLCJDTm8iOiIifX0sIkNFQ0QwMEFDOSI6eyJJZCI6IkI3MDQ2MzY3OCIsIk5hbWUiOiJCdXR0b24gSG9sZXMiLCJTd2F0Y2giOiI4RDJBQzNDRiIsIlN3YXRjaE5hbWUiOiI0NTUzIFB1cnBsZSIsIkNvbG9yIjoiIiwiQ29udHJhc3QiOnsiQ1N3YXRjaCI6IiIsIkNDb2xvciI6IiIsIkNObyI6IiJ9fSwiRDBGNDhGQ0M2Ijp7IklkIjoiREVEMUIwQ0Y5IiwiTmFtZSI6IkJ1dHRvbiBUaHJlYWRzIiwiU3dhdGNoIjoiOEQyQUMzQ0YiLCJTd2F0Y2hOYW1lIjoiNDU1MyBQdXJwbGUiLCJDb2xvciI6IiIsIkNvbnRyYXN0Ijp7IkNTd2F0Y2giOiIiLCJDQ29sb3IiOiIiLCJDTm8iOiIifX19LCJCRCI6WyIyMEJDMjUyNzMiXSwiQkYiOltdLCJTQSI6IkZBQ0UiLCJUUiI6MiwiVFgiOiIxN0Y3M0IxNUMifQ=="*/
-
+      var look ='';
       $.ajax({
         url:ServiceUrl+"/v1/Product?key="+key,
         type: "GET",
@@ -54,19 +53,21 @@
       Tailoriconfig = new Tailori.TailoriConfig({
         ServiceUrl:ServiceUrl,
         Key:key,
-        DefaultProduct:"Men-Shirt",
+        DefaultProduct:"Men-Suit",
         ContainerId:"Scene",
         //AutoSpecific : true,.
         AutoAlignment: true,
         //Texture: "44B532775",
-        //Look : look,
+        // Look : look,
         CursorZoom: true,
         SpecificView: SpecificView,
-        TextureRepeat: 2,
+        //TextureRepeat: 2,
         //ModelFOV : 30,
         //ModelPosition : -12,
-        //TextureRepeat: 2,
-        AutoRotationSpeed: 20
+        //TextureRepeat: 1,
+        Debug: false,
+        AutoRotationSpeed: 20,
+        //ModelRotationX: 36
       });
 
       //============================ Callback methods ==============================
@@ -92,42 +93,76 @@
                 txt += "<div id='"+ Details[index].Id +"Two' class='panel-collapse collapse' aria-expanded='true' style=''>";
                 txt +="<div class='panel-body'>";
                 txt +="<div class='panel-group id='"+Details[index].Id+"Nasted'>"
-            var Options = Tailoriconfig.getOptions(Details[index].Id);
-            for(var index2 in Options){
-                  txt +="<div class='panel panel-default'>";
+                var Options = Tailoriconfig.getOptions(Details[index].Id);
+                for(var index2 in Options){
+                      txt +="<div class='panel panel-default'>";
+                      txt +="<div class='panel-heading'>";
+                      txt +="<h4 class='panel-title title'>";
+                      txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+Details[index].Id+"Nasted' href='#"+Options[index2].Id+"Feature'>";
+                      txt +=Options[index2].Name;
+                      txt +="</a>";
+                      txt +="</h4>";
+                      txt +="</div>";
+                      txt +="<div id='"+Options[index2].Id+"Feature' class='panel-collapse collapse'>";
+                      txt +="<div class='panel-body nested-menu' id='features'>";
+                      var Features = Tailoriconfig.getFeatures(Options[index2].Id);
+                      for (var index3 in Features) {
+                        txt +="<li id='"+Features[index3].Id+"' detail='"+Details[index].Id+"'><a href='#'>"+Features[index3].Name+"</a></li>";
+                      }
+                      txt +="</div>";
+                      txt +="</div>";
+                      txt +="</div>";
+                }
+
+                var Contrast = Tailoriconfig.getContrasts(Details[index].Id);
+                if(Contrast.length > 0){
+                  txt +="<div class='panel panel-default' id='contrast'>";
                   txt +="<div class='panel-heading'>";
                   txt +="<h4 class='panel-title title'>";
-                  txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+Details[index].Id+"Nasted' href='#"+Options[index2].Id+"Feature'>";
-                  txt +=Options[index2].Name;
+                  txt +="<a class='collapsed' data-toggle='collapse' data-parent='#"+Details[index].Id+"Nasted' href='#"+Options[index2].Id+"Contrast'>";
+                  txt +="Contrast";
                   txt +="</a>";
                   txt +="</h4>";
                   txt +="</div>";
-                  txt +="<div id='"+Options[index2].Id+"Feature' class='panel-collapse collapse'>";
+                  txt +="<div id='"+Options[index2].Id+"Contrast' class='panel-collapse collapse'>";
                   txt +="<div class='panel-body nested-menu'>";
-                  var Features = Tailoriconfig.getFeatures(Options[index2].Id);
-                  for (var index3 in Features) {
-                    txt +="<li id='"+Features[index3].Id+"' detail='"+Details[index].Id+"'><a href='#'>"+Features[index3].Name+"</a></li>";
+                  for (var contrast in Contrast) {
+                    if (Contrast.hasOwnProperty(contrast)) {
+                      txt +="<li id='"+Contrast[contrast].Id+"' detail='"+Details[index].Id+"'><a href='#'>"+Contrast[contrast].Name+"</a></li>";
+                    }
                   }
                   txt +="</div>";
                   txt +="</div>";
                   txt +="</div>";
-            }
-              txt +="</div>";
-              txt +="</div>";
-              txt +="</div>";
-              txt +="</div>";
-              txt +="</div>";
+                }
+
+                txt +="</div>";
+                txt +="</div>";
+                txt +="</div>";
+                txt +="</div>";
+                txt +="</div>";
           }
           $("#menu").empty().html(txt);
           $("#menu .accordionmenu").eq(0).css("margin-top","51px");
 
-          $("#menu .nested-menu li").unbind("click");
-          $("#menu .nested-menu li").click(function(e){
+          $("#menu #features li").unbind("click");
+          $("#menu #features li").click(function(e){
             e.stopPropagation();
             var  id = $(this).attr("id");
             var detailId = $(this).attr("detail");
             $("#loader").show();
             Tailoriconfig.setFeature(id);
+          });
+
+          $("#menu #contrast li").unbind("click");
+          $("#menu #contrast li").click(function(e){
+            e.stopPropagation();
+            var  ContrastNo = $(this).attr("id");
+            var detailId = $(this).attr("detail");
+            $("#loader").show();
+            //Tailoriconfig.setFeature(id);
+            getContrastFabric(detailId,ContrastNo);
+            console.log("Contrast No: " + ContrastNo + "Detail Id: " + detailId);
           });
 
           getFabrics($("#menu .accordionmenu").eq(0).attr("id"));
@@ -187,6 +222,30 @@
             txt += "<tbody>";
             txt += "</table>";
 
+            if(summary.ContrastSummary.length > 0){
+              txt += "<h4>Contrast Summary</h4>";
+              txt += "<table class='table'>";
+              txt += "<thead>";
+              txt += "<tr>";
+              txt += "<th>Detail Name</th>";
+              txt += "<th>Contrast</th>";
+              txt += "<th>Fabric Id</th>";
+              txt += "</tr>";
+              txt += "</thead>";
+              txt += "<tbody>";
+              for (var cno in summary.ContrastSummary) {
+                if (summary.ContrastSummary.hasOwnProperty(cno)) {
+                  txt += "<tr>";
+                  txt += "<td>"+summary.ContrastSummary[cno].DetailName+"</td>";
+                  txt += "<td>"+summary.ContrastSummary[cno].ContrastName+"</td>";
+                  txt += "<td>"+summary.ContrastSummary[cno].FabricId+"</td>";
+                  txt += "</tr>";
+                }
+              }
+              txt += "<tbody>";
+              txt += "</table>";
+            }
+
             txt += "<h4>Fabrics Summary</h4>";
             txt += "<table class='table'>";
             txt += "<thead>";
@@ -216,6 +275,12 @@
           $("#resetproduct").click(function(){
             $("#loader").show();
             Tailoriconfig.ResetProduct();
+          });
+
+          $("#resetContrast").unbind('click');
+          $("#resetContrast").click(function(){
+            //$("#loader").show();
+            Tailoriconfig.ResetContrast();
           });
 
           $("#chevent").unbind('click');
@@ -251,7 +316,8 @@
           });
 
           if(type.toLowerCase().includes("suit")){
-            Tailoriconfig.setModelPosition(7,30);
+            Tailoriconfig.setTexture("2B31EF104",4.5);
+            Tailoriconfig.setModelPosition(7,25);
           }
           Tailoriconfig.RotationWithPan(true);
           $("#chevent").attr('evflag','true');
@@ -295,6 +361,12 @@
         $("#loader").hide();
       }
 
+      Tailoriconfig.OnContrastTextureChange = function(){
+        $("#contrastModal").modal("hide");
+        $("#loader").hide();
+      }
+
+
       Tailoriconfig.OnLoading = function(percentage){
         console.log("Model loading " + percentage + "%");
       }
@@ -307,7 +379,7 @@
 
       function getFabrics(id,isLibConfig){
         $.ajax({
-          url:ServiceUrl+"/v1/Swatches?key="+key+"&id="+id,
+          url:ServiceUrl+"/v1/Swatches?key="+key+"&id="+id+"&s=0/e=10",
           type: "GET",
           dataType: "json"
         }).done(function(data){
@@ -335,9 +407,39 @@
             $("#fabrics ul li").click(function(){
               var id = $(this).attr("id");
               $("#loader").show();
-              Tailoriconfig.setTexture(id,2);
+              Tailoriconfig.setTexture(id);
             });
           }
+        });
+      }
+      function getContrastFabric(detail,contrastNo){
+        $.ajax({
+          url:ServiceUrl+"/v1/Swatches?key="+key+"&id="+detail+"&s=0/e=10/c",
+          type: "GET",
+          dataType: "json"
+        }).done(function(data){
+          //console.log(data);
+          var txt = "";
+          for (var index in data) {
+            txt += "<li id='"+data[index].Id+"' detail='"+detail+"' cno='"+contrastNo+"'>";
+            txt += "<div class='fabricimage'>";
+            txt += "<img src='"+ServiceUrl+"/v1/SwatchImage?key="+key+"&"+data[index].Id+"'>";
+            txt += "</div>";
+            txt += "<h4>"+data[index].Name+"</h4>";
+            txt += "</li>";
+          }
+          $("#contrastModal #cfabrics ul").empty().html(txt);
+
+          $("#contrastModal #cfabrics ul li").unbind("click");
+          $("#contrastModal #cfabrics ul li").click(function(){
+            var id = $(this).attr("id");
+            var cno = $(this).attr("cno");
+            var detail = $(this).attr("detail");
+            //$("#loader").show();
+            Tailoriconfig.setContrastTexture(detail,cno,id);
+
+          });
+          $("#contrastModal").modal();
         });
       }
     </script>
@@ -524,6 +626,7 @@
               <li id="resetmodal">Reset Model</li>
               <li id="summary">Summary</li>
               <li id="resetproduct">Reset Product</li>
+              <li id="resetContrast">Reset Contrast</li>
               <li evflag="false" id="chevent">Change Event</li>
               <li id="screenshot">Take Screenshot</li>
               <li id="autoSpecific">AutoSpecific</li>
@@ -569,6 +672,32 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="contrastModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title text-center">Contrast Fabrics</h3>
+          </div>
+          <div id="cfabrics" class="modal-body">
+            <ul>
+              <li>
+                <div class="fabricimage">
+                  <img src="">
+                </div>
+                <h4>fdafdasfds</h4>
+              </li>
+            </ul>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
