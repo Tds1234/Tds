@@ -1,0 +1,153 @@
+html, body {
+    height: 100%;
+}
+.menu{
+  background: red;
+}
+.fill {
+    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.menu-parent{
+    padding-left: 0.2px;
+}
+#menu{
+  overflow: auto;
+}
+#fabrics{
+  margin-top: 51px;
+  height: 50%;
+}
+#fabrics ul{
+  margin: 0px;
+  padding: 5px 15px;
+  list-style-type: none;
+  height: 100%;
+  overflow: auto;
+  border: 1px solid #d1d1d1;
+  height: calc(100% - 73px);
+}
+#fabrics ul li{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+#fabrics ul li h4{
+  float: left;
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 16px;
+  color: inherit;
+}
+.fabricimage{
+  float: left;
+  display: inline-block;
+  width: 70px;
+  height: 100%;
+  /* border: 1px solid; */
+  overflow: hidden;
+}
+#cfabrics ul li{
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+#cfabrics ul li h4{
+  float: left;
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 16px;
+  color: inherit;
+}
+
+
+#alignment ul{
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+#alignment ul li{
+  display: block;
+  border: 1px solid #d1d1d1;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+#alignment ul li:hover{
+  background-color: #d1d1d1;
+  color: #777;
+}
+#zoombutton{
+  position: absolute;
+  bottom: 80px;
+  right: 25px;
+}
+#zoombutton ul{
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+}
+#zoombutton ul li{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border: 1px solid #777;
+  margin: 5px;
+  text-align: center;
+  font-size: 32px;
+  background-color: #fff;
+}
+#zoombutton ul li:hover{
+  cursor: pointer;
+  background-color: #d1d1d1;
+  color: #777;
+}
+#other{
+  position: absolute;
+  top: 100px;
+  right: 25px;
+}
+#other ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+#other ul li{
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 10px 50px;
+  border: 1px solid #d1d1d1;
+  text-align: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+  color: #777;
+  background-color: #fff;
+  cursor: pointer;
+}
+#other ul li:hover{
+  background-color: #d1d1d1;
+  color: #777;
+}
+
+#loader{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: 40%;
+  margin-top: 30%;
+  background-image: url('../loader.gif');
+  background-size: contain;
+  padding: 0px;
+}
