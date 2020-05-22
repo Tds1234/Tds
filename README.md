@@ -373,11 +373,11 @@ This method call when you set libconfig feature (seperately draping feature).
 ------------------------------------------------
 
 ## Example
-Using Tailori3D Plugin
+Using Tds Plugin
 
 ```js
 
-var Tailoriconfig = new Tailori.TailoriConfig({
+var Tailoriconfig = new Tds.Tailori({
   ServiceUrl:"http://ip/WEBAPI3D",
   Key:"1234656",
   DefaultProduct:"Men-Shirt",
@@ -476,4 +476,28 @@ No parameters Required
 ##### Example
 ```js
   designArchive.hide();
+```
+------------------------------------------------
+
+## Example
+Using Tds Plugin
+
+```js
+
+var designArchive = new Tds.DesignArchive({
+  ServiceUrl:"http://ip/WEBAPI3D",
+  Key:"1234656",
+  ProductTypeId: "954960030478",
+  ProductGroupId: "909770895775"
+});
+
+designArchive.OnConfigLoad = function(){
+  alert("All configuration load..");
+};
+
+$("#showButton").click(function(){
+  designArchive.show();
+});
+
+
 ```
