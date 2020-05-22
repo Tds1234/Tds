@@ -402,7 +402,7 @@ $("#resetmodal").click(function(){
 ```
 ------------------------------------------------
 
-#DesignArchive
+# DesignArchive
 
 ## Plugin initialization
 
