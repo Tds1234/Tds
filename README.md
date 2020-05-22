@@ -1,8 +1,10 @@
-# Tailori3D API
+# Tds API
+
+# Tailori3D
 
 Textronics Design System have created an interactive platform for bespoke clothing. Textronics Tailori API is a plugin that simplifies access to the functionality of textronics services.
 
-# Features
+## Features
 
 To know more about features of TheGuide, continue reading our documentation and check our available components.     
 It provides following features:
@@ -31,8 +33,6 @@ It provides following features:
   [View online Demo](http://www.textronic.online/tailori)
 
 __________________________________________________________________________________________________________________________________
-
-# Documentation
 
 ## Tailori structure
 
@@ -63,14 +63,14 @@ In Tailori3D API first we have to know how Tailori work,first we need to know st
 1) Download plugin and add script
 
 ```html
-<script src="js/tailori.js"></script>
+<script src="js/Tds.js"></script>
 ```
 
 2) To create object of Plugin.
 
 ```js
 
-var TailoriConfiguration = new Tailori.TailoriConfig({
+var TailoriConfiguration = new Tds.Tailori({
   // plugin options
 });
 
@@ -399,4 +399,51 @@ $("#resetmodal").click(function(){
 });
 
 
+```
+------------------------------------------------
+
+#DesignArchive
+
+## Plugin initialization
+
+1) Download plugin and add script
+
+```html
+<script src="js/Tds.js"></script>
+```
+
+2) To create object of Plugin.
+
+```js
+
+var TailoriConfiguration = new Tds.DesignArchive({
+  // plugin options
+});
+
+```
+------------------------------------------------
+
+## Plugin options
+| Props                                          | Description  | Required
+| -----------------------------------------------|------------| -------:|
+| ServiceUrl                                     | ServiceUrl is a url where we place all our data that we need to call, <br />For eg. product, draping parts, buttons, fabrics, etc. <br />**Provided by textronics.**  | * |
+| Key                                    | Unique id generated when user logs in with given username and password <br>**Provided by textronics.** </br> | * |
+| ProductTypeId | Product type id | * |
+| ProductGroupId | Product group id | * |
+| CollectionId | Collection id | |
+
+------------------------------------------------
+
+## Plugin Callback methods
+### `OnConfigLoad()`
+##### Description
+This method call when all configuration are load
+##### Return values
+No return values.
+
+##### Example
+```js
+  TailoriConfiguration.OnConfigLoad = function(){
+    // Logic..
+  }
 ```
