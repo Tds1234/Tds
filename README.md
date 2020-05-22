@@ -416,7 +416,7 @@ $("#resetmodal").click(function(){
 
 ```js
 
-var TailoriConfiguration = new Tds.DesignArchive({
+var DesignArchive = new Tds.DesignArchive({
   // plugin options
 });
 
@@ -443,7 +443,7 @@ No return values.
 
 ##### Example
 ```js
-  TailoriConfiguration.OnConfigLoad = function(){
+  DesignArchive.OnConfigLoad = function(){
     // Logic..
   }
 ```
