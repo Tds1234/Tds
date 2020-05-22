@@ -416,7 +416,7 @@ $("#resetmodal").click(function(){
 
 ```js
 
-var DesignArchive = new Tds.DesignArchive({
+var designArchive = new Tds.DesignArchive({
   // plugin options
 });
 
@@ -443,7 +443,37 @@ No return values.
 
 ##### Example
 ```js
-  DesignArchive.OnConfigLoad = function(){
+  designArchive.OnConfigLoad = function(){
     // Logic..
   }
+```
+------------------------------------------------
+## Plugin methods
+### `show()`
+##### Description
+This method is used for show popup window.
+##### Required parameters
+| parameters  | Type  | Description                                      |
+|-------------|-------|--------------------------------------------------|
+| url | string  | texture url for drapping model |
+| productType | number  | Product Type id |
+| productGroup | number  | Product Group id |
+| subjectId | number  | Subject id for selection |
+
+##### Example
+```js
+  designArchive.show();
+  designArchive.show(TexuteUrl,ProductTypeId,ProductGroupId);
+  designArchive.show(TexuteUrl,ProductTypeId,ProductGroupId,SubjectId);
+```
+------------------------------------------------
+### `hide()`
+##### Description
+This method is used for hiding popup window.
+##### Required parameters
+No parameters Required
+
+##### Example
+```js
+  designArchive.hide();
 ```
